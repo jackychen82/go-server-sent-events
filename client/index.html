@@ -1,0 +1,21 @@
+<html>
+<header>
+  <script>
+    const evtSource = new EventSource("http://localhost:8080/sse");
+
+    // listen on sse
+    evtSource.onmessage = function (event) {
+      const newElement = document.createElement("li");
+      const eventList = document.getElementById("ul");
+      newElement.innerHTML = `Message: ${event.data}`;
+      eventList.appendChild(newElement);
+    }
+  </script>
+
+</header>
+
+<body>
+  <ul id="ul"></ul>
+</body>
+
+</html>
